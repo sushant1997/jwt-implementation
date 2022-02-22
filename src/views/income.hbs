@@ -1,0 +1,56 @@
+<h1>Enter Income Details</h1>
+<a class="btn btn-primary" href="/home">Home Page</a>
+
+
+<form action="/income" method="POST">
+  <div class="form-group">
+    <label for="source">Source:</label>
+    <input type="text" id="source" name="source" class="form-control">
+  </div>
+
+
+  <div class="form-group">
+
+    <label for="categories">Select Categories:</label>
+    <select name="categories" id="categories" class="form-control">
+      <option value="salary">salary</option>
+      <option value="business">business</option>
+      <option value="tips">tips</option>
+      <option value="others">others</option>
+    </select>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input type="number" class="form-control" name="amount">
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-1">Submit</button>
+
+</form>
+
+
+<h3>Income table</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Source</th>
+      <th scope="col">categories</th>
+      <th scope="col">amount</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each income}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.source}}</td>
+      <td>{{this.categories}}</td>
+      <td>{{this.amount}}</td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
