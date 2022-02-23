@@ -1,5 +1,6 @@
 const {User} = require('../../models/index');
 const comparedPassword = require('../utils/bcrypt')
+const jwt = require('../utils/jwt')
 
 const getData = async(req, res)=>{
     try{
@@ -25,7 +26,11 @@ const loginUser = async(req, res) =>{
     if (!matching){
         console.log(`Incorrect username, email or password!`);
     }else{
-        
+        const accessToken = await jwt.createToken(user)
+        await res.cookie("access-token",accessToken,{
+            maxAge: 300000
+        })
+
         await res.render('home')
         console.log(`User loged in.`)
     }

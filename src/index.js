@@ -2,17 +2,20 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
-const homeroute = require('./routes/home.Routes')
+const homeroute = require('./routes/home.Routes');
 const incomeroutes = require('./routes/income.routes');
-const expensesroutes = require('./routes/expenses.routes')
-const registrationroutes = require('./routes/registrationRoutes')
-const loginroutes = require('./routes/loginRoutes')
+const expensesroutes = require('./routes/expenses.routes');
+const registrationroutes = require('./routes/registrationRoutes');
+const loginroutes = require('./routes/loginRoutes');
+const cookieParser = require('cookie-parser')
+const jwt_validation = require('./utils/jwt')
+
 
 const app = express();
 
 
 
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 

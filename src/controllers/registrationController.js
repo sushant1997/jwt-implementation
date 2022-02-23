@@ -19,7 +19,7 @@ const create = async(req, res) => {
         email,
         password:Password
     });
-    res.render('home');
+    res.render('login');
     }catch(e){
         console.log('The error is ' + e);
     }    
